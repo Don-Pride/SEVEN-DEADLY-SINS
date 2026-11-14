@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>七宗罪 · The Seven Deadly Sins</title>
+<meta name="description" content="七宗罪 —— 古斯塔夫·多雷木刻版画风格的哥特奇幻主题。悬停以窥其貌，点击以堕其中。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 噪点颗粒（版画纸纹） -->
+  <div id="grain" aria-hidden="true"></div>
+  <!-- 神圣纹样（哥特连拱立面 · 栏杆 · 尖券束柱） -->
+  <div class="sacra" aria-hidden="true"></div>
+  <!-- 火星粒子 -->
+  <canvas id="embers" aria-hidden="true"></canvas>
+  <!-- 暗角 -->
+  <div class="vignette" aria-hidden="true"></div>
+  <!-- 定制光标 -->
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+
+  <!-- 神圣荣光 & 放射光柱（多雷标志性光束） -->
+  <div class="glory" id="glory" aria-hidden="true"></div>
+  <!-- 版画云霭（底部深渊） -->
+  <div class="clouds" id="clouds" aria-hidden="true"></div>
+
+  <!-- ============ 首页 ============ -->
+  <header class="site-header">
+    <div class="eyebrow">◆&nbsp; SEPTEM PECCATA CAPITALIA &nbsp;◆</div>
+    <h1 class="title">七宗罪</h1>
+    <p class="subtitle">THE SEVEN DEADLY SINS</p>
+  </header>
+
+  <!-- 炼狱山目录 · 展开/收起开关 -->
+  <button class="purgatory-toggle" id="purgatoryToggle" type="button" aria-expanded="false" aria-controls="purgatory" aria-label="展开炼狱山目录">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5 L18 12 L9 19 Z"/></svg>
+  </button>
+
+  <!-- ============ 炼狱山 · 左侧目录侧边栏 ============ -->
+  <aside class="purgatory" id="purgatory" aria-label="炼狱山目录" aria-hidden="true">
+    <div class="purgatory-head">
+      <div class="purgatory-title">炼狱山</div>
+      <div class="purgatory-sub">MONS PURGATORII</div>
+    </div>
+    <ol class="purgatory-levels">
+      <li class="level level-eden" style="--w:40%; --sw:#d8c48a">
+        <a class="level-bar" href="eden.html" aria-label="山巅 伊甸园 Paradisus Terrestris">
+          <span class="cn">伊甸园</span><span class="latin">Paradisus</span><span class="go-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li class="level" style="--w:44%; --sw:#e05a8a">
+        <a class="level-bar" href="lust.html" aria-label="第七层 色欲 Luxuria">
+          <span class="num">VII</span><span class="cn">色欲</span><span class="latin">Luxuria</span><span class="go-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li class="level" style="--w:53%; --sw:#e08a4a">
+        <a class="level-bar" href="gluttony.html" aria-label="第六层 暴食 Gula">
+          <span class="num">VI</span><span class="cn">暴食</span><span class="latin">Gula</span><span class="go-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li class="level" style="--w:62%; --sw:#e0b24a">
+        <a class="level-bar" href="greed.html" aria-label="第五层 贪婪 Avaritia">
+          <span class="num">V</span><span class="cn">贪婪</span><span class="latin">Avaritia</span><span class="go-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li class="level" style="--w:71%; --sw:#7fa8cf">
+        <a class="level-bar" href="sloth.html" aria-label="第四层 懒惰 Acedia">
+          <span class="num">IV</span><span class="cn">懒惰</span><span class="latin">Acedia</span><span class="go-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li class="level" style="--w:80%; --sw:#e8564a">
+        <a class="level-bar" href="wrath.html" aria-label="第三层 愤怒 Ira">
+          <span class="num">III</span><span class="cn">愤怒</span><span class="latin">Ira</span><span class="go-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li class="level" style="--w:90%; --sw:#4fc47e">
+        <a class="level-bar" href="envy.html" aria-label="第二层 嫉妒 Invidia">
+          <span class="num">II</span><span class="cn">嫉妒</span><span class="latin">Invidia</span><span class="go-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li class="level" style="--w:100%; --sw:#b07ce0">
+        <a class="level-bar" href="pride.html" aria-label="第一层 傲慢 Superbia">
+          <span class="num">I</span><span class="cn">傲慢</span><span class="latin">Superbia</span><span class="go-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+    </ol>
+    <p class="purgatory-hint">自山巅而下 · 点击一处，入其图景</p>
+  </aside>
+
+  <main class="stage-wrap">
+    <div class="stage" id="stage">
+      <svg class="seal" id="seal" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
+      <div class="nodes" id="nodes"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p class="hint">悬停以窥其貌 · 点击以堕其中</p>
+    <p class="hint-en">HOVER TO BEHOLD · CLICK TO DESCEND</p>
+    <p class="credit">in the manner of Gustave Doré · wood-engraving</p>
+  </footer>
+
+  <!-- 悬停/聚焦时的简介卡片 -->
+  <aside class="intro-card" id="introCard" aria-hidden="true">
+    <span class="swatch" aria-hidden="true"></span>
+    <div class="intro-text">
+      <div class="intro-name">
+        <span class="cn" id="introCn"></span>
+        <span class="latin" id="introLatin"></span>
+      </div>
+      <p class="brief" id="introBrief"></p>
+    </div>
+    <div class="intro-side">
+      <span class="hex" id="introHex"></span>
+      <button class="go" id="introGo" type="button">堕入 →</button>
+    </div>
+  </aside>
+
+  <!-- SVG 符文定义 -->
+  <svg class="svg-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="icon-all" viewBox="0 0 100 100">
+        <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M50 20 L80 82 H20 Z"/>
+          <path d="M22 50 C22 34 34 26 50 26 C66 26 78 34 78 50 C78 66 66 74 50 74 C34 74 22 66 22 50 Z"/>
+          <circle cx="50" cy="50" r="10"/>
+          <circle cx="50" cy="50" r="4"/>
+        </g>
+      </symbol>
+      <symbol id="icon-pride" viewBox="0 0 100 100">
+        <g fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 73 H86 L82 87 H18 Z"/>
+        <path stroke-linejoin="miter" stroke-miterlimit="10" d="M13 73 L17.5 37 L29 73 Z"/>
+        <path stroke-linejoin="miter" stroke-miterlimit="10" d="M71 73 L82.5 37 L87 73 Z"/>
+        <path stroke-linejoin="miter" stroke-miterlimit="10" d="M28 73 L35 51 L42 73 Z"/>
+        <path stroke-linejoin="miter" stroke-miterlimit="10" d="M58 73 L65 51 L72 73 Z"/>
+        <path stroke-linejoin="miter" stroke-miterlimit="10" d="M40 73 L50 29 L60 73 Z"/>
+        <path stroke-linejoin="miter" stroke-miterlimit="10" d="M17.5 23 L21 30 L17.5 37 L14 30 Z"/>
+        <path stroke-linejoin="miter" stroke-miterlimit="10" d="M82.5 23 L86 30 L82.5 37 L79 30 Z"/>
+        <path fill="currentColor" stroke="none" d="M50 11 L52.9 20.1 L60.5 22.5 L52.9 24.9 L50 34 L47.1 24.9 L39.5 22.5 L47.1 20.1 Z"/>
+        <path d="M50 76.5 L53.4 80 L50 83.5 L46.6 80 Z"/>
+        <circle cx="30" cy="80" r="1.7" fill="currentColor" stroke="none"/>
+        <circle cx="70" cy="80" r="1.7" fill="currentColor" stroke="none"/>
+        </g>
+      </symbol>
+      <symbol id="icon-envy" viewBox="0 0 100 100">
+        <g fill="currentColor" stroke="none">
+        <path fill-rule="evenodd" d="M6 54
+Q20 28 50 26 Q80 28 94 54 Q80 80 50 82 Q20 80 6 54 Z
+M50 36 L55 52 L50 74 L45 52 Z"/>
+        </g>
+      </symbol>
+      <symbol id="icon-wrath" viewBox="0 0 100 100">
+        <g fill="currentColor" stroke="none">
+        <path fill-rule="evenodd" d="M50 1
+C53 1 54 3 54 5
+L54 10 L46 10 L46 5
+C46 3 47 1 50 1 Z
+M45 10 L45 15 L55 15 L55 10 Z
+M43 15 L43 18 L57 18 L57 15 Z
+M38 18 L38 22 L43 22 L43 25 L50 98 L57 25 L57 22 L62 22 L62 18 Z
+M47 19 L47 24 L50 24 L50 19 Z
+M49 32 L49 80 L51 80 L51 32 Z"/>
+        </g>
+      </symbol>
+      <symbol id="icon-sloth" viewBox="0 0 100 100">
+        <g fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="25" y="10" width="50" height="7" rx="3.5"/>
+        <rect x="25" y="83" width="50" height="7" rx="3.5"/>
+        <path d="M32 17 V26 C32 40 47 43 47 50 C47 57 32 60 32 74 V83"/>
+        <path d="M68 17 V26 C68 40 53 43 53 50 C53 57 68 60 68 74 V83"/>
+        <path stroke-width="2.4" stroke-linecap="butt" d="M50 54 V74"/>
+        <path d="M34 34 Q50 28 66 34"/>
+        <path d="M36 77 Q50 68 64 77"/>
+        <circle cx="14" cy="50" r="7.5"/>
+        <path stroke-width="2.6" d="M14 39.5 V36.5 M14 60.5 V63.5 M4 50 H1.5 M24 50 H26.5"/>
+        <path stroke-linejoin="miter" stroke-miterlimit="10" d="M82 39 A11 11 0 1 1 82 61 A13 13 0 0 0 82 39 Z"/>
+        </g>
+      </symbol>
+      <symbol id="icon-greed" viewBox="0 0 100 100">
+        <g fill="currentColor" stroke="none">
+        <path fill-rule="evenodd" d="M14 46
+        Q14 26 50 20 Q86 26 86 46 L86 90 Q86 96 50 96 Q14 96 14 90 Z
+        M18 48 L82 48 L82 58 L18 58 Z
+        M22 48 L30 55 L38 48 Z M42 48 L50 55 L58 48 Z M62 48 L70 55 L78 48 Z
+        M30 58 L38 51 L46 58 Z M54 58 L62 51 L70 58 Z
+        M43 58 L57 58 L57 70 L50 75 L43 70 Z
+        M16 60 L30 60 L30 66 L22 66 L22 72 L16 72 Z
+        M70 60 L84 60 L84 72 L78 72 L78 66 L70 66 Z
+        M16 82 L22 82 L22 88 L30 88 L30 90 L16 90 Z
+        M70 82 L84 82 L84 90 L78 90 L78 88 L70 88 Z
+        M20 40 L24 50 L28 40 Z M72 40 L76 50 L80 40 Z
+        M18 78 L82 78 L82 80 L18 80 Z"/>
+        </g>
+      </symbol>
+      <symbol id="icon-gluttony" viewBox="0 0 100 100">
+        <g fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="10">
+        <path d="M16 36 Q50 8 84 36 L78 48 L74 36 L70 48 L66 36 L62 48 L58 36 L54 48 L50 36 L46 48 L42 36 L38 48 L34 36 L30 48 L26 36 L22 48 L18 36 Z"/>
+        <path d="M16 74 Q50 98 84 74 L78 62 L74 74 L70 62 L66 74 L62 62 L58 74 L54 62 L50 74 L46 62 L42 74 L38 62 L34 74 L30 62 L26 74 L22 62 L18 74 Z"/>
+        </g>
+      </symbol>
+      <symbol id="icon-lust" viewBox="0 0 100 100">
+        <g fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M50 78 C32 64 24 48 28 40 C32 32 42 32 50 42 C58 32 68 32 72 40 C76 48 68 64 50 78 Z"/>
+          <path d="M50 18 C53 24 58 27 58 31 C58 35 55 37 50 34 C45 37 42 35 42 31 C42 27 47 24 50 18 Z"/>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
+  <script src="data.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

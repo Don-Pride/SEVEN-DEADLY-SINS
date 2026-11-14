@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>炼狱 · 伊甸园 · 山巅 — 七宗罪</title>
+<meta name="description" content="炼狱山顶 · 伊甸园：古林、双河与贝雅特丽齐的降临。《神曲·炼狱篇》第二十八至三十三歌，以古斯塔夫·多雷木刻版画呈现。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="level.css">
+</head>
+<body data-level="eden">
+
+  <div id="grain" aria-hidden="true"></div>
+  <canvas id="embers" aria-hidden="true"></canvas>
+  <div class="aura" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="scroll-progress" id="progress" aria-hidden="true"></div>
+
+  <div class="boot" id="boot" aria-hidden="true">
+    <svg viewBox="0 0 100 100"><use id="bootSigil" href="#icon-eden"></use></svg>
+  </div>
+
+  <header class="sub-nav">
+    <a class="back" href="index.html">← 返回七宗罪</a>
+    <span class="sub-nav-mark" id="navMark">PURGATORIO · PARADISUS TERRESTRIS</span>
+  </header>
+
+  <nav class="rail" id="rail" aria-label="炼狱山目录"></nav>
+
+  <main id="page"></main>
+
+  <svg class="svg-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="icon-eden" viewBox="0 0 100 100">
+        <g fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M50 12 L66 40 L58 40 L74 64 L66 64 L82 84 L18 84 L34 64 L26 64 L42 40 L34 40 Z"/>
+          <path d="M50 84 V92"/>
+          <path d="M36 92 H64"/>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
+  <script src="data.js"></script>
+  <script src="level.js"></script>
+</body>
+</html>
